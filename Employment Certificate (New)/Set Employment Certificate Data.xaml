@@ -1,0 +1,1027 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Set_Employment_Certificate_Data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="CertificateTemplate" Type="InArgument(x:String)" />
+    <x:Property Name="SalaryYear" Type="InArgument(x:String)" />
+    <x:Property Name="SubstituteForName" Type="InArgument(x:String)" />
+    <x:Property Name="SubstituteReason" Type="InArgument(x:String)" />
+    <x:Property Name="BasisTemporaryEmployment" Type="InArgument(x:String)" />
+    <x:Property Name="CreateDocument" Type="InArgument(x:Boolean)" />
+    <x:Property Name="ManagerFullName" Type="InArgument(x:String)" />
+    <x:Property Name="DescriptionOfTasks" Type="InArgument(x:String)" />
+    <x:Property Name="OtherInformation" Type="InArgument(x:String)" />
+    <x:Property Name="CollectiveAgreement" Type="InArgument(x:String)" />
+    <x:Property Name="EmploymentText" Type="InArgument(x:String)" />
+    <x:Property Name="StartDateDateTime" Type="InArgument(s:DateTime)" />
+    <x:Property Name="UncheckCollectiveAgreement" Type="InArgument(x:Boolean)" />
+    <x:Property Name="UncheckDescriptionsOfTasks" Type="InArgument(x:Boolean)" />
+    <x:Property Name="TimeoutMSWhenCreating" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <this:Set_Employment_Certificate_Data.SubstituteForName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Set_Employment_Certificate_Data.SubstituteForName>
+  <this:Set_Employment_Certificate_Data.SubstituteReason>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Set_Employment_Certificate_Data.SubstituteReason>
+  <this:Set_Employment_Certificate_Data.CreateDocument>
+    <InArgument x:TypeArguments="x:Boolean" />
+  </this:Set_Employment_Certificate_Data.CreateDocument>
+  <this:Set_Employment_Certificate_Data.EmploymentText>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Set_Employment_Certificate_Data.EmploymentText>
+  <this:Set_Employment_Certificate_Data.UncheckCollectiveAgreement>
+    <InArgument x:TypeArguments="x:Boolean" />
+  </this:Set_Employment_Certificate_Data.UncheckCollectiveAgreement>
+  <this:Set_Employment_Certificate_Data.UncheckDescriptionsOfTasks>
+    <InArgument x:TypeArguments="x:Boolean" />
+  </this:Set_Employment_Certificate_Data.UncheckDescriptionsOfTasks>
+  <this:Set_Employment_Certificate_Data.TimeoutMSWhenCreating>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Set_Employment_Certificate_Data.TimeoutMSWhenCreating>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>946,2247</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Set_Employment_Certificate_Data_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Setting all the data field values in employment certificate view in v5.&#xA;&#xA;Precondition: Employment certificate view in V5 open.&#xA;Postcondition: Data set." DisplayName="Set_Employment_Certificate_Data" sap:VirtualizedContainerService.HintSize="602,2182" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Default="30000" Name="TimeoutMedium" />
+      <Variable x:TypeArguments="x:Int32" Default="5000" Name="TimeoutShort" />
+      <Variable x:TypeArguments="x:Int32" Default="60000" Name="TimeoutLong" />
+      <Variable x:TypeArguments="x:Int32" Default="1000" Name="TimeoutVeryShort" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Heroma V5" sap:VirtualizedContainerService.HintSize="560,1887" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="3507f5a7b7d1a6939e8e25e54fe0b64b" Selector="&lt;wnd app='*.exe' ctrlname='PAPortalWindow' /&gt;">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Set Data" sap:VirtualizedContainerService.HintSize="526,1742" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap2010:Annotation.AnnotationText="Uppdatera startdatum om endast förlängning" DisplayName="Start Date" sap:VirtualizedContainerService.HintSize="484,108" sap2010:WorkflowViewState.IdRef="Sequence_107">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[StartDateDateTime &lt;&gt; new DateTime]" DisplayName="If Any StartDate" sap:VirtualizedContainerService.HintSize="484,543" sap2010:WorkflowViewState.IdRef="If_44">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,357" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Uppdatera startdatum" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="False" SimulateType="False" Text="[StartDateDateTime.ToString(&quot;yyyyMMdd&quot;)]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1004c2ca-ebe4-4dc9-9be7-5643b301c0e5" InformativeScreenshot="2944b9b4a483edb0980b70f6287eb782" Selector="&lt;wnd ctrlname='ivCalCmbFom' /&gt;&lt;wnd ctrlname='PAEditDateTime' /&gt;&lt;wnd ctrlname='ivDateEdit' /&gt;&lt;wnd aaname='*' cls='WindowsForms10.EDIT.*' /&gt;" WaitForReady="INTERACTIVE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:LogMessage DisplayName="Log Message StartDate" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Set start date: &quot; + StartDateDateTime.ToString(&quot;yyyy-MM-dd&quot;)]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Set Template" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Using certificate template: &quot; + CertificateTemplate]" />
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,238" sap2010:WorkflowViewState.IdRef="CommentOut_44">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,160" sap2010:WorkflowViewState.IdRef="Sequence_100">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition OffsetX="-10" OffsetY="10" Position="TopRight" />
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f4e9cd5d-bab3-4e38-b40f-582caf629a67" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelAvtal' /&gt;&lt;wnd ctrlname='ivComboboxAvtal' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </Sequence>
+                </ui:CommentOut.Body>
+              </ui:CommentOut>
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DeselectAfter="False" DisplayName="Välj anställningsbevis Sundsvalls Kommun" EmptyField="False" sap:VirtualizedContainerService.HintSize="436,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="True" SimulateType="False" Text="[CertificateTemplate+ &quot;[k(down)]&quot;]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="402b7bab-2504-4ef8-981e-78c5396bd35b" InformativeScreenshot="8f0d3f67c2c01953350a41ab6f41342e" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelAvtal' /&gt;&lt;wnd ctrlname='ivComboboxAvtal' /&gt;&lt;wnd ctrlname='ivCombobox' /&gt;" WaitForReady="INTERACTIVE">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+              </ui:TypeInto>
+              <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Anställningsinfo'" sap:VirtualizedContainerService.HintSize="436,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                <ui:WaitUiElementAppear.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b28442a4-05fa-45b4-a96b-839cc5eb6183" InformativeScreenshot="f025013139647c89ec5d89f8436ceeca" Selector="&lt;wnd ctrlname='ivGroupPanelAnställningsinformation' /&gt;" TimeoutMS="[TimeoutShort]">
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:WaitUiElementAppear.Target>
+              </ui:WaitUiElementAppear>
+              <ui:LogMessage DisplayName="Log Message Selected" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Selected certificate/contract template '&quot; + CertificateTemplate +&quot;'&quot;]" />
+            </Sequence>
+            <Sequence DisplayName="Yearly Salary" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_31">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[Not String.IsNullOrWhiteSpace(SalaryYear)]" DisplayName="If Årsläneläge Inte Är Tomt" sap:VirtualizedContainerService.HintSize="839,1069" sap2010:WorkflowViewState.IdRef="If_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Sätt Årslöneläge" sap:VirtualizedContainerService.HintSize="460,911" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="WrittenSalaryYear" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element Årslöneläge" sap:VirtualizedContainerService.HintSize="418,68" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                      <ui:WaitUiElementAppear.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="80ac5ac0-ccf9-4296-9c89-1eaa76ec1dad" Selector="&lt;ctrl name='Årslöneläge' role='editable text' /&gt;&#xA;" TimeoutMS="10000" WaitForReady="COMPLETE" />
+                      </ui:WaitUiElementAppear.Target>
+                    </ui:WaitUiElementAppear>
+                    <ui:RetryScope DisplayName="Retry Scope Set Salary Year" sap:VirtualizedContainerService.HintSize="418,580" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="3">
+                      <ui:RetryScope.ActivityBody>
+                        <ActivityAction>
+                          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,334" sap2010:WorkflowViewState.IdRef="Sequence_108">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:TypeInto DelayBefore="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="False" ClickBeforeTyping="True" DelayBetweenKeys="200" DisplayName="Type Into 'Årslöneläge'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="True" SimulateType="False" Text="[SalaryYear]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d283be29-65af-411e-a2a4-d926276b9539" InformativeScreenshot="d67b2beb25af561fdb6973e27b6ff3d4" Selector="&lt;ctrl name='Årslöneläge' role='editable text' /&gt;" WaitForReady="COMPLETE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Salary Year Text" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                              <ui:GetValue.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8cebf21e-cf7a-40be-a453-c1c10960fb94" Selector="&lt;ctrl name='Årslöneläge' role='editable text' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:GetValue.Target>
+                              <ui:GetValue.Value>
+                                <OutArgument x:TypeArguments="x:String">[WrittenSalaryYear]</OutArgument>
+                              </ui:GetValue.Value>
+                            </ui:GetValue>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:RetryScope.ActivityBody>
+                      <ui:RetryScope.Condition>
+                        <ActivityFunc x:TypeArguments="x:Boolean">
+                          <ui:CheckTrue DisplayName="Check True Written Salary = Salary Year" ErrorMessage="Failed to set salary year" Expression="[WrittenSalaryYear = SalaryYear]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                        </ActivityFunc>
+                      </ui:RetryScope.Condition>
+                    </ui:RetryScope>
+                    <ui:LogMessage DisplayName="Log Message Annual Salary Year" sap:VirtualizedContainerService.HintSize="418,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Salary year set: &quot; + SalaryYear]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <ui:LogMessage DisplayName="Log Message Annual Salary Year" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;No salary year set&quot;]" />
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Employment Text" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_101">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[Not String.IsNullOrWhiteSpace(EmploymentText)]" DisplayName="If Any Employment Text" sap:VirtualizedContainerService.HintSize="515,888" sap2010:WorkflowViewState.IdRef="If_43">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="479,701" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="Change Text" sap:VirtualizedContainerService.HintSize="437,134" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="[EmploymentText]">
+                      <ui:SelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="4">
+                          <x:String>Anställningen gäller fr.o.m [FOM] dock längst t.o.m [TOM].</x:String>
+                          <x:String>Anställningen avser ett vikariat för [VIKARIATFÖR] fr.o.m [FOM] med anledning av [ORSAK] dock längst t.o.m [TOM].</x:String>
+                        </scg:List>
+                      </ui:SelectItem.Items>
+                      <ui:SelectItem.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="685b8926-9d0c-4b23-8fd9-0af147c446e0" InformativeScreenshot="8431eacdeb318ec0a4c8d95daa9f45f5" Selector="&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivCmbBoxAnställningsText' /&gt;&lt;wnd ctrlname='ivCombobox' /&gt;" WaitForReady="INTERACTIVE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:SelectItem.Target>
+                    </ui:SelectItem>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="437,304" sap2010:WorkflowViewState.IdRef="CommentOut_45">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="401,226" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" AlterIfDisabled="True" DisplayName="Byt text" sap:VirtualizedContainerService.HintSize="359,134" sap2010:WorkflowViewState.IdRef="SelectItem_4" Item="Anställningen avser ett vikariat för [VIKARIATFÖR] fr.o.m [FOM] med anledning av [ORSAK] dock längst t.o.m [TOM].">
+                            <ui:SelectItem.Items>
+                              <scg:List x:TypeArguments="x:String" Capacity="4">
+                                <x:String>Anställningen gäller fr.o.m [FOM] dock längst t.o.m [TOM].</x:String>
+                                <x:String>Anställningen avser ett vikariat för [VIKARIATFÖR] fr.o.m [FOM] med anledning av [ORSAK] dock längst t.o.m [TOM].</x:String>
+                              </scg:List>
+                            </ui:SelectItem.Items>
+                            <ui:SelectItem.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="685b8926-9d0c-4b23-8fd9-0af147c446e0" InformativeScreenshot="8431eacdeb318ec0a4c8d95daa9f45f5" Selector="&lt;wnd ctrlname='PALPortalPage' idx='2' /&gt;&lt;wnd ctrlname='ivPanel' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd aaname='Anställningen gäller fr.o.m [FOM] dock längst t.o.m [TOM].' cls='WindowsForms10.Window.*' /&gt;&lt;wnd ctrlname='ivCombobox' /&gt;" WaitForReady="INTERACTIVE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:SelectItem.Target>
+                          </ui:SelectItem>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="437,91" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Set employment text: &quot;+ EmploymentText]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_103">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="If temp employment" DisplayName="Temporary Employment" sap:VirtualizedContainerService.HintSize="634,2050" sap2010:WorkflowViewState.IdRef="Sequence_28">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="IsTemporaryEmployment" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:UiElementExists DisplayName="Är det tidsbegränsad anställning" Exists="[IsTemporaryEmployment]" sap:VirtualizedContainerService.HintSize="592,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="726f5c93-961e-4775-b485-70c911e1f6cf" InformativeScreenshot="edc115c2bfb9bfe90ba2816c1ed924cc" Selector="&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivComboboxTidsbegränsningensGrund' /&gt;&lt;wnd ctrlname='ivCombobox' /&gt;&lt;wnd cls='Edit' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <If Condition="[Not String.IsNullOrWhiteSpace(BasisTemporaryEmployment)]" DisplayName="Om tidsbegränsad anställning" sap:VirtualizedContainerService.HintSize="592,1781" sap2010:WorkflowViewState.IdRef="If_17">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="556,1594" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Open'" sap:VirtualizedContainerService.HintSize="514,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True" SimulateClick="False">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8e24a922-86e8-419c-bf7e-a4f3fa2e93e0" InformativeScreenshot="31b4b1ab71d5fc1969b35ff730824740" Selector="&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivComboboxTidsbegränsningensGrund' /&gt;&lt;wnd ctrlname='ivCombobox' /&gt;&lt;ctrl name='Open' role='push button' /&gt;" WaitForReady="INTERACTIVE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Skriv intyp av tisdbegränsning" EmptyField="False" sap:VirtualizedContainerService.HintSize="514,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="True" SimulateType="False" Text="[BasisTemporaryEmployment+ &quot;[k(down)][k(enter)]&quot;]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1a57d3f6-f3d5-42c8-b78f-93a6a9d97676" InformativeScreenshot="82fa8df9496b8e317026f70e59011e8d" Selector="&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivComboboxTidsbegränsningensGrund' /&gt;&lt;wnd ctrlname='ivCombobox' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="INTERACTIVE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <If Condition="[Not String.IsNullOrWhiteSpace(SubstituteForName)]" DisplayName="If Any Substitute For" sap:VirtualizedContainerService.HintSize="514,1051" sap2010:WorkflowViewState.IdRef="If_16">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="478,864" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="variable2" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,192" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Delay DisplayName="2 sek - Delay" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                          </ui:CommentOut>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Skriv in Vikariat för" EmptyField="False" sap:VirtualizedContainerService.HintSize="436,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="False" Text="[SubstituteForName]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4f1a43d-54fd-4027-9141-c1dfd59be933" InformativeScreenshot="3ef300cc089a2c2d9c416e3c4af35fba" Selector="&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivTxtVikarieNamn' /&gt;&lt;wnd cls='WindowsForms10.EDIT.*' /&gt;" WaitForReady="INTERACTIVE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,192" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Delay DisplayName="2 sek - Delay" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                          </ui:CommentOut>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Skriv in Anledning till vikariat" EmptyField="False" sap:VirtualizedContainerService.HintSize="436,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" SendWindowMessages="True" SimulateType="False" Text="[SubstituteReason]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="104d19f7-c03d-4cac-98b2-14339cc9b627" InformativeScreenshot="d83b97d80801bf48cef2a5e862ce4e98" Selector="&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivTxtVikariatAnledning' /&gt;&lt;wnd cls='WindowsForms10.EDIT.*' /&gt;" WaitForReady="INTERACTIVE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="514,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Basis for temporary employment set: &quot; + BasisTemporaryEmployment]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Contract Info&#xA;Other Info" DisplayName="Misc Info" sap:VirtualizedContainerService.HintSize="484,108" sap2010:WorkflowViewState.IdRef="Sequence_76">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message Misc Info" sap:VirtualizedContainerService.HintSize="1031,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Start other info&quot;]" />
+              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="1031,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+              <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1031,3491" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Övriga upplysningar" sap:VirtualizedContainerService.HintSize="989,3317" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Default="2" Name="AvtalsRadIdx" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:Click CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Klicka Övriga upplysningar" sap:VirtualizedContainerService.HintSize="947,106" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a95736b8-596f-495e-a526-398929caaa56" InformativeScreenshot="bb86ea9479b6f76b5b8723892484a424" Selector="&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;" WaitForReady="INTERACTIVE">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                          </ui:Target>
+                        </ui:Click.Target>
+                      </ui:Click>
+                      <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element" sap:VirtualizedContainerService.HintSize="947,68" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+                        <ui:WaitUiElementAppear.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="11742947-e3ed-47e4-9811-80aa7a59e744" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:WaitUiElementAppear.Target>
+                      </ui:WaitUiElementAppear>
+                      <Sequence DisplayName="Skriv in övriga uppgifter" sap:VirtualizedContainerService.HintSize="947,883" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Default="1" Name="ÖvrigtRadIdx" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[CertificateTemplate.ToLower = &quot;timvikarier&quot;]" DisplayName="If Timvikarie" sap:VirtualizedContainerService.HintSize="797,378" sap2010:WorkflowViewState.IdRef="If_35">
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[ÖvrigtRadIdx]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">1</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[AvtalsRadIdx]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">2</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                              </ui:MultipleAssign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[ÖvrigtRadIdx]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">2</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:String">[AvtalsRadIdx]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:String">1</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                              </ui:MultipleAssign>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                        <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="797,68" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="66b53d2c-a1c6-4255-9569-51e049bdfd5b" Selector="[String.Format(&quot;&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&lt;ctrl name='Text' role='cell' idx='{0}' /&gt;&quot;, ÖvrigtRadIdx)]">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Type Other Information" EmptyField="False" sap:VirtualizedContainerService.HintSize="797,134" sap2010:WorkflowViewState.IdRef="TypeInto_16" SendWindowMessages="False" SimulateType="False" Text="[OtherInformation]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="148ef2cb-9e4f-4013-8cab-afc0c18402ee" InformativeScreenshot="aeb56f8bf24d5e7d6ebc56f1b0213338" WaitForReady="INTERACTIVE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:LogMessage DisplayName="Log Message Misc Info" sap:VirtualizedContainerService.HintSize="797,91" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Set misc information: &quot; + OtherInformation]" />
+                      </Sequence>
+                      <If Condition="[Not String.IsNullOrEmpty(CollectiveAgreement)]" DisplayName="If Any Collective Agreement" sap:VirtualizedContainerService.HintSize="947,1004" sap2010:WorkflowViewState.IdRef="If_40">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,465" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Collective Agreement" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="66b53d2c-a1c6-4255-9569-51e049bdfd5b" Selector="[String.Format(&quot;&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&lt;ctrl name='Text' role='cell' idx='{0}' /&gt;&quot;, AvtalsRadIdx)]">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Type Collective Agreement" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_19" SendWindowMessages="False" SimulateType="False" Text="[CollectiveAgreement]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="148ef2cb-9e4f-4013-8cab-afc0c18402ee" InformativeScreenshot="aeb56f8bf24d5e7d6ebc56f1b0213338" WaitForReady="INTERACTIVE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                            <ui:LogMessage DisplayName="Log Message Collective Agreement" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Set collective agreement: &quot; + CollectiveAgreement]" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Uncheck Collective Agreement " sap:VirtualizedContainerService.HintSize="526,847" sap2010:WorkflowViewState.IdRef="Sequence_118">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="ui:UiElement" Name="CollectiveAgreementCheckboxElement" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element Checkbox Collective Agreement " FoundElement="[CollectiveAgreementCheckboxElement]" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_6">
+                              <ui:WaitUiElementAppear.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="019a150c-8ac4-4992-a076-ab5d5b34a4fb" Selector="[String.Format(&quot;&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&lt;ctrl name='SelectionBox' role='cell' idx='{0}' /&gt;&quot;, AvtalsRadIdx)]" TimeoutMS="[TimeoutVeryShort]">
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:WaitUiElementAppear.Target>
+                            </ui:WaitUiElementAppear>
+                            <If Condition="[UncheckCollectiveAgreement AndAlso CollectiveAgreementCheckboxElement.Get(&quot;aastate&quot;).ToString = &quot;checked&quot;]" DisplayName="If To Uncheck Collective Agreement" sap:VirtualizedContainerService.HintSize="484,647" sap2010:WorkflowViewState.IdRef="If_47">
+                              <If.Then>
+                                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="418,461" sap2010:WorkflowViewState.IdRef="RetryScope_6" NumberOfRetries="3">
+                                  <ui:RetryScope.ActivityBody>
+                                    <ActivityAction>
+                                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,287" sap2010:WorkflowViewState.IdRef="Sequence_116">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Checkbox Collective Agreement" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_18" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition Position="Center">
+                                              <ui:CursorPosition.OffsetX>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetX>
+                                              <ui:CursorPosition.OffsetY>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetY>
+                                            </ui:CursorPosition>
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a491dd44-8fea-4a5c-997f-a4dd05c3dc94" Selector="[String.Format(&quot;&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&lt;ctrl name='SelectionBox' role='cell' idx='{0}' /&gt;&quot;, AvtalsRadIdx)]">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                        <ui:WaitAttribute Attribute="aastate" AttributeValue="[&quot;default&quot;]" DisplayName="Wait aastate Attribute Collective Agreement" Element="[CollectiveAgreementCheckboxElement]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="WaitAttribute_2" TimeoutMS="[TimeoutShort]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:RetryScope.ActivityBody>
+                                  <ui:RetryScope.Condition>
+                                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                                  </ui:RetryScope.Condition>
+                                </ui:RetryScope>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_117">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                      <If Condition="[Not String.IsNullOrEmpty(DescriptionOfTasks)]" DisplayName="If Any Description Of Tasks" sap:VirtualizedContainerService.HintSize="947,1004" sap2010:WorkflowViewState.IdRef="If_42">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,465" sap2010:WorkflowViewState.IdRef="Sequence_95">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Description Of Tasks" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="66b53d2c-a1c6-4255-9569-51e049bdfd5b" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&lt;ctrl name='Text' role='cell' idx='3' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DisplayName="Type Description Of Tasks" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_20" SendWindowMessages="False" SimulateType="False" Text="[DescriptionOfTasks]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="b88f5d25-ab76-4629-a516-8c851047507e" InformativeScreenshot="aeb56f8bf24d5e7d6ebc56f1b0213338" WaitForReady="INTERACTIVE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                            <ui:LogMessage DisplayName="Log Message Description Of Tasks" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Set description of tasks: &quot; + DescriptionOfTasks]" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Uncheck Description Of Tasks" sap:VirtualizedContainerService.HintSize="526,847" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="ui:UiElement" Name="DescriptionOfTasksCheckboxElement" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element Description Of Tasks" FoundElement="[DescriptionOfTasksCheckboxElement]" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_5">
+                              <ui:WaitUiElementAppear.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="019a150c-8ac4-4992-a076-ab5d5b34a4fb" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&#xA;&lt;wnd ctrlname='ivGroupControl' /&gt;&#xA;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&#xA;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&#xA;&lt;ctrl name='SelectionBox' role='cell' idx='3' /&gt;&#xA;" TimeoutMS="[TimeoutVeryShort]">
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:WaitUiElementAppear.Target>
+                            </ui:WaitUiElementAppear>
+                            <If Condition="[UncheckDescriptionsOfTasks AndAlso DescriptionOfTasksCheckboxElement.Get(&quot;aastate&quot;).ToString = &quot;checked&quot;]" DisplayName="If To Uncheck Description Of Tasks" sap:VirtualizedContainerService.HintSize="484,647" sap2010:WorkflowViewState.IdRef="If_46">
+                              <If.Then>
+                                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="418,461" sap2010:WorkflowViewState.IdRef="RetryScope_5" NumberOfRetries="3">
+                                  <ui:RetryScope.ActivityBody>
+                                    <ActivityAction>
+                                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,287" sap2010:WorkflowViewState.IdRef="Sequence_115">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Checkbox Description Of Tasks" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_17" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition Position="Center">
+                                              <ui:CursorPosition.OffsetX>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetX>
+                                              <ui:CursorPosition.OffsetY>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetY>
+                                            </ui:CursorPosition>
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a491dd44-8fea-4a5c-997f-a4dd05c3dc94" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelÖvrigaUpplysningar' /&gt;&lt;wnd ctrlname='ivGridÖvrigaUpplysningarTexter' /&gt;&lt;ctrl name='SelectionBox' role='cell' idx='3' /&gt;">
+                                              <ui:Target.TimeoutMS>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:Target.TimeoutMS>
+                                              <ui:Target.WaitForReady>
+                                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                                              </ui:Target.WaitForReady>
+                                            </ui:Target>
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                        <ui:WaitAttribute Attribute="aastate" AttributeValue="[&quot;default&quot;]" DisplayName="Wait Aastate Attribute Description Of Tasks" Element="[DescriptionOfTasksCheckboxElement]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="WaitAttribute_1" TimeoutMS="[TimeoutShort]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:RetryScope.ActivityBody>
+                                  <ui:RetryScope.Condition>
+                                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                                  </ui:RetryScope.Condition>
+                                </ui:RetryScope>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_114">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:RetryScope>
+            </Sequence>
+            <Sequence DisplayName="Signing Manager" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_77">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="WrittenManagerName" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:RetryScope DisplayName="Retry Scope Type Manager Name" sap:VirtualizedContainerService.HintSize="418,580" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="3">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,334" sap2010:WorkflowViewState.IdRef="Sequence_109">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:TypeInto DelayBefore="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBetweenKeys="200" DisplayName="Chef Namn" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_15" SendWindowMessages="True" SimulateType="False" Text="[ManagerFullName]">
+                        <ui:TypeInto.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f914e5fe-bc72-421c-be05-eae5c4275b19" InformativeScreenshot="554fc607c6a1ce1be11ee5a93a78f669" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelBrevfot' /&gt;&lt;wnd ctrlname='ivTxtArbetsgivareNamnförtydligande' /&gt;&lt;ctrl name='Arbetsgivarens namnförtydligande' role='editable text' /&gt;" WaitForReady="INTERACTIVE">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                          </ui:Target>
+                        </ui:TypeInto.Target>
+                      </ui:TypeInto>
+                      <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Manager Name Text" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                        <ui:GetValue.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8cebf21e-cf7a-40be-a453-c1c10960fb94" Selector="&lt;wnd ctrlname='ASViewAnställningsavtal' /&gt;&lt;wnd ctrlname='ivGroupControl' /&gt;&lt;wnd ctrlname='ivGroupPanelBrevfot' /&gt;&lt;wnd ctrlname='ivTxtArbetsgivareNamnförtydligande' /&gt;&lt;ctrl name='Arbetsgivarens namnförtydligande' role='editable text' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:GetValue.Target>
+                        <ui:GetValue.Value>
+                          <OutArgument x:TypeArguments="x:String">[WrittenManagerName]</OutArgument>
+                        </ui:GetValue.Value>
+                      </ui:GetValue>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean">
+                    <ui:CheckTrue DisplayName="Check True" ErrorMessage="Failed to set manager name" Expression="[WrittenManagerName = ManagerFullName]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
+                  </ActivityFunc>
+                </ui:RetryScope.Condition>
+              </ui:RetryScope>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="418,91" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Written manager&quot;]" />
+            </Sequence>
+            <If Condition="[CreateDocument]" DisplayName="If To Create Document" sap:VirtualizedContainerService.HintSize="484,793" sap2010:WorkflowViewState.IdRef="If_34">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,606" sap2010:WorkflowViewState.IdRef="Sequence_99">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:Click CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Klicka Spara" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6c485b60-cffb-431b-9dcb-037865508d65" InformativeScreenshot="e3806303351581e8111c23520c80e450" Selector="&lt;wnd ctrlname='PAViewReportRequest' /&gt;&lt;wnd ctrlname='ivBtnSkapa' aaname='Skapa' /&gt;" WaitForReady="INTERACTIVE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:Click.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Click>
+                  <ui:LogMessage DisplayName="Log Message Creating" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Creating document&quot;]" />
+                  <ui:WaitUiElementAppear FoundElement="{x:Null}" DisplayName="Vänta till Dokument visas" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_4" WaitActive="False" WaitVisible="False">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="258e5ca6-78b4-4a07-ba34-0e965441d13d" InformativeScreenshot="73b49df50f26c764fe00e2a6ec6bad57" Selector="&lt;wnd ctrlname='PALViewPDF' /&gt;" TimeoutMS="[TimeoutMSWhenCreating]" WaitForReady="INTERACTIVE" />
+                    </ui:WaitUiElementAppear.Target>
+                  </ui:WaitUiElementAppear>
+                  <ui:LogMessage DisplayName="Log Message Created" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Document created and open&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="242,83" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:WindowScope>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;All data set for employment certificate/contract &quot; + if(CreateDocument,&quot;and document created&quot;,&quot;but no document created&quot;)]" />
+  </Sequence>
+</Activity>

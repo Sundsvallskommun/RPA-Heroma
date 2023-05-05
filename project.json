@@ -1,0 +1,57 @@
+{
+  "name": "Heroma",
+  "description": "Activities for Heroma.",
+  "main": "NewActivity.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "2.7.2",
+    "UiPath.Mail.Activities": "1.7.2",
+    "UiPath.System.Activities": "21.4.0",
+    "UiPath.Testing.Activities": "1.4.6",
+    "UiPath.UIAutomation.Activities": "21.4.3"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.10.4.0",
+  "projectVersion": "2.0.10",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Library",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "f3e66852-4646-4bfb-85ae-59160f528add",
+        "fileName": "Tests\\SetData_TestCase.xaml"
+      }
+    ],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
